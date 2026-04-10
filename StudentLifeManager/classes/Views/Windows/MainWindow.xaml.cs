@@ -12,6 +12,8 @@ namespace StudentLifeManager.classes.Views.Windows;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private Button saveBtn = new Button();
+    
     public MainWindow()
     {
         InitializeComponent();
@@ -52,8 +54,25 @@ public partial class MainWindow : Window
             if (subject != null)
             {
                 subject.IsEditing = false;
+                saveBtn.Visibility = Visibility.Visible;
             }
             //subject.Id
+        }
+    }
+
+    private void SaveSubject(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button btn && btn.DataContext is Subject subj && DataContext is MainViewModel vm)
+        {
+            var subject = vm.Subjects.FirstOrDefault(s => s.Id == subj.Id);
+            if (subject != null)
+            {
+                subject.IsEditing = !subject.IsEditing;
+                
+                saveBtn = btn;
+                btn.Visibility = Visibility.Collapsed;
+                saveBtn.Visibility = Visibility.Collapsed;
+            }
         }
     }
 

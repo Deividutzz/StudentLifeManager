@@ -27,6 +27,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         
                         <TextBox IsReadOnly="{Binding IsEditing}"
@@ -41,8 +42,14 @@
                                 HorizontalAlignment="Right"
                                 Click="EditSubject"/>
                         
-                        <Button Content="Remove Subject"
+                        <Button Content="Save"
                                 Grid.Column="2"
+                                Margin="10,0,0,0"
+                                HorizontalAlignment="Center"
+                                Click="SaveSubject"/>
+                        
+                        <Button Content="Remove Subject"
+                                Grid.Column="3"
                                 Margin="10,0,0,0"
                                 HorizontalAlignment="Right"
                                 Click="RemoveSubject"/>
