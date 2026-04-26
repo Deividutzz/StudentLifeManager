@@ -1,0 +1,45 @@
+<Page x:Class="StudentLifeManager.classes.Views.Pages.Login.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+      mc:Ignorable="d"
+      Height="450" Width="800">
+      
+      <Grid VerticalAlignment = "Center" HorizontalAlignment="Center">
+          
+          <Border Width="400" Height="250">
+              
+              <StackPanel>
+                  
+                  <TextBlock Text="Log in:" HorizontalAlignment="Center" FontSize="24"/>
+                  
+                  <TextBlock Text="&#10;Insert your username:" FontSize="16" />
+                  <TextBox Name = "Username" KeyDown="EnterInput" HorizontalAlignment="Left" MinWidth="100" />
+                  
+                  <TextBlock Text="Insert the password:" FontSize="16" />
+                  <TextBox Name = "Password" KeyDown="EnterInput" HorizontalAlignment="Left" MinWidth="125" />
+                  
+                  <Button Content="Log in" Cursor="Hand" Click="Validate" HorizontalAlignment="Left" MinWidth="140" />
+                  
+                  <StackPanel Orientation="Horizontal" >
+                      
+                      <TextBlock Text="Don't have an account? " FontSize="16" />
+                      <Button Content="Sign in"
+                              Cursor="Hand"
+                              Click="GoRegister"
+                              HorizontalAlignment="Left"
+                              FontSize="16"
+                              Background="Transparent"
+                              BorderBrush="Transparent" />
+                      
+                  </StackPanel>
+                  
+              </StackPanel>
+              
+          </Border>
+          
+      </Grid>
+    
+</Page>
