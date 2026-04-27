@@ -77,6 +77,6 @@ public class MainViewModel : INotifyPropertyChanged
     
     public void RemoveSubject(Subject subject)
     {
-        Subjects.Remove(subject);
+        subjectService.RemoveSubject(Subjects, subject);
     }
 }

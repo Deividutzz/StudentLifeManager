@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using StudentLifeManager.classes.Models;
 
 namespace StudentLifeManager.classes.Services;
@@ -9,7 +10,7 @@ public class SubjectService
         subject.Add(new Subject {Name = name});
     }
 
-    public void RemoveSubject(List <Subject> subject, Subject subjectToRemove)
+    public void RemoveSubject(ObservableCollection <Subject> subject, Subject subjectToRemove)
     {
         subject.Remove(subjectToRemove);
     }

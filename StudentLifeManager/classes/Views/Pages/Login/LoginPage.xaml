@@ -36,6 +36,8 @@
                       
                   </StackPanel>
                   
+                  <TextBlock Name="LoginErr" Foreground="Red" FontSize="16" Visibility="Collapsed"/>
+                  
               </StackPanel>
               
           </Border>

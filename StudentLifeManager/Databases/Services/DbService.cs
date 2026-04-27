@@ -11,7 +11,7 @@ public class DbService
     public DbService()
     {
         string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        string appFolder = Path.Combine(folder, "MyApp");
+        string appFolder = Path.Combine(folder, "StudentLifeManager");
 
         Directory.CreateDirectory(appFolder);
 
@@ -28,7 +28,7 @@ public class DbService
         var command = connection.CreateCommand();
         command.CommandText =
             @"
-    CREATE TABLE IF NOT EXISTS Users (
+        CREATE TABLE IF NOT EXISTS Users (
         Id INTEGER PRIMARY KEY AUTOINCREMENT,
         Username TEXT NOT NULL UNIQUE,
         PasswordHash TEXT NOT NULL

@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using StudentLifeManager.classes.Models;
 using StudentLifeManager.classes.ViewModels;
+using StudentLifeManager.classes.Views.Pages.Login;
 
 namespace StudentLifeManager.classes.Views.Pages.MainPage;
 
@@ -82,8 +83,13 @@ public partial class MainPage : Page
         {
             if (DataContext is MainViewModel vm)
             {
-                vm.Subjects.Remove(subject);
+                vm.RemoveSubject(subject);
             }
         }
+    }
+
+    private void LogOut(object sender, RoutedEventArgs e)
+    {
+        NavigationService.Navigate(new LoginPage());
     }
 }

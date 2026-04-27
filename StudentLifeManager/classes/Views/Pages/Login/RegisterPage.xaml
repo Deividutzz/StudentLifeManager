@@ -9,17 +9,23 @@
       
       <Grid VerticalAlignment = "Center" HorizontalAlignment="Center">
             
-            <Border Width="400" Height="250">
-              
+            <Border Width="800" Height="400">
+            
                   <StackPanel>
                   
                         <TextBlock Text="SIGN IN" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Top" />
                         
                         <TextBlock Text="&#10;Create a username:" FontSize="16"/>
-                        <TextBox Name="UsernameTb" HorizontalAlignment="Left" MinWidth="100" KeyDown="EnterInput"/> 
+                        <StackPanel Orientation="Horizontal">
+                              <TextBox Name="UsernameTb" HorizontalAlignment="Left" MinWidth="100" KeyDown="EnterInput"/>
+                              <TextBlock Name="UsernameErr" Foreground="Red" FontSize="16" Visibility="Collapsed"/>
+                        </StackPanel>
                         
                         <TextBlock Text="Create a password:" FontSize="16"/>
-                        <TextBox Name="PasswordTb" HorizontalAlignment="Left" MinWidth="100" KeyDown="EnterInput"/>
+                        <StackPanel Orientation="Horizontal">
+                              <TextBox Name="PasswordTb" HorizontalAlignment="Left" MinWidth="100" KeyDown="EnterInput"/>
+                              <TextBlock Name="PasswordErr" Foreground="Red" FontSize="16" Visibility="Collapsed"/>
+                        </StackPanel>
                         
                         <Button Cursor="Hand"
                                 HorizontalAlignment="Left"
@@ -27,12 +33,13 @@
                                 Click="GoToLogin"
                                 MinWidth="125"/>
                         
-                        <Button Name="RegisterBtn"
-                                Cursor="Hand"
+                        <Button Cursor="Hand"
                                 HorizontalAlignment="Left"
                                 Content="Register now"
                                 Click="Register"
                                 MinWidth="125"/>
+                        
+                        <TextBlock Name="Confirmation" Foreground="ForestGreen" FontSize="16" Visibility="Collapsed" />
                   
                   </StackPanel>
               
