@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using StudentLifeManager.classes.Services;
 using StudentLifeManager.classes.Services.LoginLogic;
 
@@ -75,11 +76,13 @@ public partial class RegisterPage : Page
         if (_authService.Register(userName, userPass))
         {
             Confirmation.Text = "Registration successful!";
+            Confirmation.Foreground = Brushes.ForestGreen;
             Confirmation.Visibility = Visibility.Visible;
         }
         else
         {
-            Confirmation.Text = "Registration failed! Account already exists. Please try to log in.";
+            Confirmation.Text = "Registration failed! An account with this username already exists. Please try a different one.";
+            Confirmation.Foreground = Brushes.Red;
             Confirmation.Visibility = Visibility.Visible;
         }
     }
