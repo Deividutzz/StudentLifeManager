@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="MainPage" Height="450" Width="800">
     <StackPanel Margin="10" HorizontalAlignment="Center" >
+        <TextBlock Name="WelcomeTb" FontSize="28" HorizontalAlignment="Center" /> 
         
-        <TextBlock Text="Please insert a subject" FontSize="24" />
+        <TextBlock Text="Please insert a subject" FontSize="24" HorizontalAlignment="Center" />
         
         <TextBox Text="{Binding NewSubjectName, UpdateSourceTrigger=PropertyChanged}" 
                  KeyDown="EnterInput" Width="200" Margin="0,0,0,10"/>
@@ -62,6 +63,7 @@
         </ListBox>
         
         <Button Cursor="Hand" Content="Log out" Click="LogOut" HorizontalAlignment="Center" MinWidth="100" />
+        <Button Content="Delete table" Click="DeleteData"/>
         
     </StackPanel>
 </Page>

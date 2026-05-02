@@ -35,13 +35,21 @@
 
                     </StackPanel>
 
-                    <TextBlock Name="LoginErr" Foreground="Red" FontSize="16" Visibility="Collapsed"/>
+                    <TextBlock Name="LoginErr"
+                               Foreground="Red"
+                               FontSize="16"
+                               Visibility="Collapsed"/>
 
                 </StackPanel>
               
             </Border>
             
-            <Button Content="Delete all users" Foreground="Red" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="DeleteUsers" />
+            <Button Content="Delete all users"
+                    Foreground="Red"
+                    Background="Black"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Click="DeleteUsers" />
           
         </Grid>
     

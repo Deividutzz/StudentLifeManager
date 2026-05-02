@@ -8,6 +8,8 @@ public class AuthService
     private readonly DbService _db = new DbService();
     private readonly PassService _passwordService = new PassService();
     
+    public int CurrentUserId { get; private set; }
+    
     public bool Register(string username, string password)
     {
         var hashed = _passwordService.HashPassword(password);
@@ -43,9 +45,11 @@ public class AuthService
 
         var command = connection.CreateCommand();
         command.CommandText =
-            @"
-            SELECT PasswordHash FROM Users
-            WHERE Username = $username;";
+        @"
+            SELECT Id, PasswordHash
+            FROM Users
+            WHERE Username = $username;
+        ";
 
         command.Parameters.AddWithValue("$username", username);
 
@@ -53,8 +57,14 @@ public class AuthService
 
         if (reader.Read())
         {
-            string storedHash = reader.GetString(0);
-            return _passwordService.VerifyPassword(password, storedHash);
+            int userId = reader.GetInt32(0);
+            string storedHash = reader.GetString(1);
+
+            if (_passwordService.VerifyPassword(password, storedHash))
+            {
+                CurrentUserId = userId;
+                return true;
+            }
         }
 
         return false;

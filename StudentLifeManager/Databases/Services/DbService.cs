@@ -27,15 +27,29 @@ public class DbService
 
         var command = connection.CreateCommand();
         command.CommandText =
-            @"
-        CREATE TABLE IF NOT EXISTS Users (
-        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-        Username TEXT NOT NULL UNIQUE,
-        PasswordHash TEXT NOT NULL
-    );
-    ";
+        @"
+            CREATE TABLE IF NOT EXISTS Users (
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Username TEXT NOT NULL UNIQUE,
+            PasswordHash TEXT NOT NULL
+            );
+        ";
 
         command.ExecuteNonQuery();
+        
+        var command2 = connection.CreateCommand();
+        command2.CommandText =
+        @"
+            CREATE TABLE IF NOT EXISTS Subjects (
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            UserId INTEGER NOT NULL,
+            SubjectName TEXT NOT NULL,
+            FOREIGN KEY(UserId) REFERENCES Users(Id)
+            UNIQUE (UserId, SubjectName)
+            );
+        ";
+        
+        command2.ExecuteNonQuery();
     }
 
     public SqliteConnection GetConnection()

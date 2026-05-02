@@ -2,9 +2,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using StudentLifeManager.classes.Data;
 using StudentLifeManager.classes.Models;
+using StudentLifeManager.classes.Services.LoginLogic;
 using StudentLifeManager.classes.ViewModels;
 using StudentLifeManager.classes.Views.Pages.Login;
+using StudentLifeManager.Databases.Services;
 
 namespace StudentLifeManager.classes.Views.Pages.MainPage;
 
@@ -15,10 +18,18 @@ public partial class MainPage : Page
 {
     private Button saveBtn = new Button();
     
-    public MainPage()
+    private readonly AuthService _authService;
+    private MainViewModel _vm;
+    
+    public MainPage(MainViewModel vm)
     {
         InitializeComponent();
-        DataContext = new MainViewModel();
+        DataContext = vm;
+        _vm = vm;
+        
+        string username = vm.GetCurrentUser().Username;
+        
+        WelcomeTb.Text = "Welcome back " + username + "!";
     }
 
     private void AddSubject(object sender, RoutedEventArgs e)
@@ -68,7 +79,7 @@ public partial class MainPage : Page
             var subject = vm.Subjects.FirstOrDefault(s => s.Id == subj.Id);
             if (subject != null)
             {
-                subject.IsEditing = !subject.IsEditing;
+                subject.IsEditing = true;
                 
                 saveBtn = btn;
                 btn.Visibility = Visibility.Collapsed;
@@ -90,6 +101,29 @@ public partial class MainPage : Page
 
     private void LogOut(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new LoginPage());
+        NavigationService.Navigate(new LoginPage(_authService));
+    }
+
+    private void DeleteData(object sender, RoutedEventArgs e)
+    {
+        DbService db = new DbService();
+        
+        using var connection =  db.GetConnection();
+        connection.Open();
+        
+        var command1 = connection.CreateCommand();
+        var command2 = connection.CreateCommand();
+        
+        command1.CommandText = 
+            @";
+        DELETE FROM Subjects;
+        ";
+        command1.ExecuteNonQuery();
+        
+        command2.CommandText = 
+            @"
+        DELETE FROM sqlite_sequence WHERE name='Subjects';
+        ";
+        command2.ExecuteNonQuery();
     }
 }

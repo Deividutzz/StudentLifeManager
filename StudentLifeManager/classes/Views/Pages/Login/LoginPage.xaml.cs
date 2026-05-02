@@ -3,17 +3,22 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using StudentLifeManager.classes.Services;
 using StudentLifeManager.classes.Services.LoginLogic;
+using StudentLifeManager.classes.ViewModels;
 
 namespace StudentLifeManager.classes.Views.Pages.Login;
 
 public partial class LoginPage : Page
 {
-    private readonly AuthService _authService = new AuthService();
+    private readonly AuthService _authService;
     private readonly UserManager _userManager = new UserManager();
     
-    public LoginPage()
+    private MainViewModel _vm;
+    
+    public LoginPage(AuthService authService)
     {
         InitializeComponent();
+        
+        _authService = authService;
     }
     
     private void EnterInput(object sender, KeyEventArgs e)
@@ -37,14 +42,17 @@ public partial class LoginPage : Page
         ErrorManager err = new ErrorManager();
         if (!err.ValidateCredentials(user, pass))
         {
-            LoginErr.Text = "Invalid characters.";
+            LoginErr.Text = "Invalid credentials.";
             LoginErr.Visibility = Visibility.Visible;
             return;
         }
         
         if (_authService.Login(user,pass))
         {
-            NavigationService.Navigate(new MainPage.MainPage());
+            var vm = new MainViewModel(_authService, _userManager);
+            _vm = vm;
+            
+            NavigationService.Navigate(new MainPage.MainPage(_vm));
         }
         else
         {
@@ -60,6 +68,6 @@ public partial class LoginPage : Page
 
     private void GoRegister(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new RegisterPage());
+        NavigationService.Navigate(new RegisterPage(_authService));
     }
 }

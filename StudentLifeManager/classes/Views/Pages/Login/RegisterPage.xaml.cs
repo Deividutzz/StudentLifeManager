@@ -4,12 +4,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using StudentLifeManager.classes.Services;
 using StudentLifeManager.classes.Services.LoginLogic;
+using StudentLifeManager.classes.ViewModels;
 
 namespace StudentLifeManager.classes.Views.Pages.Login;
 
 public partial class RegisterPage : Page
 {
-    private readonly AuthService _authService = new AuthService();
+    private readonly AuthService _authService;
     
     private void EnterInput(object sender, KeyEventArgs e)
     {
@@ -20,9 +21,11 @@ public partial class RegisterPage : Page
         }
     }
 
-    public RegisterPage()
+    public RegisterPage(AuthService authService)
     {
         InitializeComponent();
+        
+        _authService = authService;
     }
 
     private void Register(object sender, RoutedEventArgs e)
@@ -89,6 +92,6 @@ public partial class RegisterPage : Page
 
     private void GoToLogin(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new LoginPage());
+        NavigationService.Navigate(new LoginPage(_authService));
     }
 }

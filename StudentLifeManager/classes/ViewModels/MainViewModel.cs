@@ -2,12 +2,18 @@ using System.Collections.ObjectModel;
 using StudentLifeManager.classes.Models;
 using StudentLifeManager.classes.Services;
 using System.ComponentModel;
+using StudentLifeManager.classes.Data;
+using StudentLifeManager.classes.Services.LoginLogic;
 
 namespace  StudentLifeManager.classes.ViewModels;
 
 public class MainViewModel : INotifyPropertyChanged
 {
-    private SubjectService subjectService;
+    private SubjectService _subjectService;
+    
+    private readonly UserManager _userService;
+    private readonly AuthService _authService;
+    private readonly User _user = new User();
     
     public event PropertyChangedEventHandler PropertyChanged;
     protected void OnPropertyChanged(string propertyName)
@@ -28,10 +34,15 @@ public class MainViewModel : INotifyPropertyChanged
         }
     }
 
-    public MainViewModel()
+    public MainViewModel(AuthService authService, UserManager userService)
     {
-        subjectService = new SubjectService();
-        Subjects = new ObservableCollection<Subject>();
+        _authService = authService;
+        _userService = userService;
+        
+        _subjectService = new SubjectService();
+        Subjects = _subjectService.LoadSubjects(authService.CurrentUserId);
+        
+        LoadUser();
     }
 
     private string errorMessage;
@@ -62,14 +73,10 @@ public class MainViewModel : INotifyPropertyChanged
             ErrorMessage = "Subject already exists.";
             return;
         }
+
+        int userId = _authService.CurrentUserId;
+        _subjectService.AddSubject(Subjects, NewSubjectName, userId);
         
-        subjectService.AddSubject(Subjects.ToList(), NewSubjectName);
-        Subjects.Add(new Subject
-        {
-            Id = Subjects.Count + 1,
-            IsEditing = true,
-            Name = NewSubjectName
-        });
         NewSubjectName = string.Empty;
         
         ErrorMessage = string.Empty;
@@ -77,6 +84,24 @@ public class MainViewModel : INotifyPropertyChanged
     
     public void RemoveSubject(Subject subject)
     {
-        subjectService.RemoveSubject(Subjects, subject);
+        _subjectService.RemoveSubject(Subjects, subject);
+    }
+    
+    public User CurrentUser { get; private set; }
+
+    private void LoadUser()
+    {
+        int userId = _authService.CurrentUserId;
+
+        CurrentUser = new User
+        {
+            UserId = userId,
+            Username = _userService.GetUsernameById(userId)
+        };
+    }
+
+    public User GetCurrentUser()
+    {
+        return CurrentUser;
     }
 }

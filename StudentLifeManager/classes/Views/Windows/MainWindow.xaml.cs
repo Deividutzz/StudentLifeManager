@@ -1,4 +1,6 @@
 using System.Windows;
+using StudentLifeManager.classes.Services.LoginLogic;
+using StudentLifeManager.classes.ViewModels;
 using StudentLifeManager.classes.Views.Pages.Login;
 using StudentLifeManager.classes.Views.Pages.MainPage;
 using StudentLifeManager.Databases.Services;
@@ -10,6 +12,9 @@ namespace StudentLifeManager.classes.Views.Windows;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly AuthService _authService = new AuthService();
+    private readonly UserManager _userManager = new UserManager();
+
     
     public MainWindow()
     {
@@ -18,6 +23,12 @@ public partial class MainWindow : Window
         var db = new DbService();
         db.InitializeDatabase();
         
-        MainFrame.Navigate(new LoginPage());
+        ShowLogin();
+    }
+
+    private void ShowLogin()
+    {
+        var vm = new MainViewModel(_authService, _userManager);
+        MainFrame.Navigate(new LoginPage(_authService));
     }
 }
