@@ -3,33 +3,41 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        Style="{StaticResource BasePageStyle}"
 
         mc:Ignorable="d">
-      
-        <Grid VerticalAlignment = "Center" HorizontalAlignment="Center" >
+    
+    <Page.Resources>
+        
+        <Style TargetType="TextBlock" BasedOn="{StaticResource LoginTextBlock}" />
+        <Style TargetType="TextBox" BasedOn="{StaticResource LoginTextBox}" />
+        <Style TargetType="Button" BasedOn="{StaticResource LoginButton}" />
+        
+    </Page.Resources>
+    
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
           
-            <Border Width="400" Height="250">
+            <Border Padding="40" Width="1300" Height="607">
               
                 <StackPanel>
                   
-                    <TextBlock Text="Log in:" HorizontalAlignment="Center" FontSize="24"/>
+                    <TextBlock Text="Log in:" VerticalAlignment="Top" FontSize="48"/>
 
-                    <TextBlock Text="&#10;Insert your username:" FontSize="16" />
-                    <TextBox Name = "Username" KeyDown="EnterInput" HorizontalAlignment="Left" MinWidth="100" />
+                    <TextBlock Text="Insert your username:" />
+                    <TextBox Name = "Username" KeyDown="EnterInput" MinWidth="100" />
 
-                    <TextBlock Text="Insert the password:" FontSize="16" />
-                    <TextBox Name = "Password" KeyDown="EnterInput" HorizontalAlignment="Left" MinWidth="125" />
+                    <TextBlock Text="Insert the password:" />
+                    <TextBox Name = "Password" KeyDown="EnterInput" MinWidth="125" />
 
-                    <Button Content="Log in" Cursor="Hand" Click="Validate" HorizontalAlignment="Left" MinWidth="140" />
+                    <Button Content="Log in" Click="Validate" MinWidth="140" />
 
-                    <StackPanel Orientation="Horizontal" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 
-                        <TextBlock Text="Don't have an account? " FontSize="16" />
+                        <TextBlock Text="Don't have an account? " />
                         <Button Content="Sign in"
-                              Cursor="Hand"
                               Click="GoRegister"
-                              HorizontalAlignment="Left"
-                              FontSize="16"
+                              FontSize="24"
                               Background="Transparent"
                               BorderBrush="Transparent" />
 
@@ -37,7 +45,6 @@
 
                     <TextBlock Name="LoginErr"
                                Foreground="Red"
-                               FontSize="16"
                                Visibility="Collapsed"/>
 
                 </StackPanel>

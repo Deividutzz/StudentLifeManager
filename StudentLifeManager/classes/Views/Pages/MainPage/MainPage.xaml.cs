@@ -19,6 +19,7 @@ public partial class MainPage : Page
     private Button saveBtn = new Button();
     
     private readonly AuthService _authService;
+    private readonly UserManager _userManager;
     private MainViewModel _vm;
     
     public MainPage(MainViewModel vm)
@@ -101,7 +102,7 @@ public partial class MainPage : Page
 
     private void LogOut(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new LoginPage(_authService));
+        NavigationService.Navigate(new LoginPage(_vm.GetAuthService(),_vm.GetUserManager()));
     }
 
     private void DeleteData(object sender, RoutedEventArgs e)

@@ -28,7 +28,6 @@ public partial class MainWindow : Window
 
     private void ShowLogin()
     {
-        var vm = new MainViewModel(_authService, _userManager);
-        MainFrame.Navigate(new LoginPage(_authService));
+        MainFrame.Navigate(new LoginPage(_authService,_userManager));
     }
 }

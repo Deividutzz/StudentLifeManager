@@ -11,7 +11,7 @@ public class MainViewModel : INotifyPropertyChanged
 {
     private SubjectService _subjectService;
     
-    private readonly UserManager _userService;
+    private readonly UserManager _userManager;
     private readonly AuthService _authService;
     private readonly User _user = new User();
     
@@ -34,10 +34,10 @@ public class MainViewModel : INotifyPropertyChanged
         }
     }
 
-    public MainViewModel(AuthService authService, UserManager userService)
+    public MainViewModel(AuthService authService, UserManager userManager)
     {
         _authService = authService;
-        _userService = userService;
+        _userManager = userManager;
         
         _subjectService = new SubjectService();
         Subjects = _subjectService.LoadSubjects(authService.CurrentUserId);
@@ -96,12 +96,22 @@ public class MainViewModel : INotifyPropertyChanged
         CurrentUser = new User
         {
             UserId = userId,
-            Username = _userService.GetUsernameById(userId)
+            Username = _userManager.GetUsernameById(userId)
         };
     }
 
     public User GetCurrentUser()
     {
         return CurrentUser;
+    }
+
+    public AuthService GetAuthService()
+    {
+        return _authService;
+    }
+
+    public UserManager GetUserManager()
+    {
+        return _userManager;
     }
 }

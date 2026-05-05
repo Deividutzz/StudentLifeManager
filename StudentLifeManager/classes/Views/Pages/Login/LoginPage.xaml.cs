@@ -10,15 +10,16 @@ namespace StudentLifeManager.classes.Views.Pages.Login;
 public partial class LoginPage : Page
 {
     private readonly AuthService _authService;
-    private readonly UserManager _userManager = new UserManager();
+    private readonly UserManager _userManager;
     
     private MainViewModel _vm;
     
-    public LoginPage(AuthService authService)
+    public LoginPage(AuthService authService, UserManager userManager)
     {
         InitializeComponent();
         
         _authService = authService;
+        _userManager = userManager;
     }
     
     private void EnterInput(object sender, KeyEventArgs e)
@@ -68,6 +69,6 @@ public partial class LoginPage : Page
 
     private void GoRegister(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new RegisterPage(_authService));
+        NavigationService.Navigate(new RegisterPage(_authService,_userManager));
     }
 }

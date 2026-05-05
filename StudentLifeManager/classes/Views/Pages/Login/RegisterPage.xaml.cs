@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using StudentLifeManager.classes.Data;
 using StudentLifeManager.classes.Services;
 using StudentLifeManager.classes.Services.LoginLogic;
 using StudentLifeManager.classes.ViewModels;
@@ -11,6 +12,7 @@ namespace StudentLifeManager.classes.Views.Pages.Login;
 public partial class RegisterPage : Page
 {
     private readonly AuthService _authService;
+    private readonly UserManager _userManager;
     
     private void EnterInput(object sender, KeyEventArgs e)
     {
@@ -21,11 +23,12 @@ public partial class RegisterPage : Page
         }
     }
 
-    public RegisterPage(AuthService authService)
+    public RegisterPage(AuthService authService, UserManager userManager)
     {
         InitializeComponent();
         
         _authService = authService;
+        _userManager = userManager;
     }
 
     private void Register(object sender, RoutedEventArgs e)
@@ -92,6 +95,6 @@ public partial class RegisterPage : Page
 
     private void GoToLogin(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new LoginPage(_authService));
+        NavigationService.Navigate(new LoginPage(_authService,_userManager));
     }
 }
