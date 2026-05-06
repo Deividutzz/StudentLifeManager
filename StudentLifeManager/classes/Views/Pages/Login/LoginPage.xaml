@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         
-        Style="{StaticResource BasePageStyle}"
+        Style="{StaticResource LoginPageStyle}"
 
         mc:Ignorable="d">
     
@@ -16,48 +16,56 @@
         
     </Page.Resources>
     
-    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
+    <Grid Margin="20">
           
-            <Border Padding="40" Width="1300" Height="607">
+        <Border Padding="60" Width="1300" Height="607">
+          
+            <Grid>
               
-                <StackPanel>
-                  
-                    <TextBlock Text="Log in:" VerticalAlignment="Top" FontSize="48"/>
+                <TextBlock Text="Log in:" VerticalAlignment="Top" FontSize="48"/>
 
+                <StackPanel VerticalAlignment="Center">
+                    
                     <TextBlock Text="Insert your username:" />
                     <TextBox Name = "Username" KeyDown="EnterInput" MinWidth="100" />
 
                     <TextBlock Text="Insert the password:" />
                     <TextBox Name = "Password" KeyDown="EnterInput" MinWidth="125" />
 
-                    <Button Content="Log in" Click="Validate" MinWidth="140" />
+                </StackPanel>
+                
+                <StackPanel VerticalAlignment="Bottom">
+                    
+                    <Button Content="Log in" Click="Validate" MinWidth="130" />
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 
                         <TextBlock Text="Don't have an account? " />
                         <Button Content="Sign in"
-                              Click="GoRegister"
-                              FontSize="24"
-                              Background="Transparent"
-                              BorderBrush="Transparent" />
+                                Click="GoRegister"
+                                Background="Transparent"
+                                BorderBrush="Transparent" />
 
                     </StackPanel>
 
                     <TextBlock Name="LoginErr"
                                Foreground="Red"
-                               Visibility="Collapsed"/>
+                               Visibility="Hidden"/>
 
                 </StackPanel>
-              
-            </Border>
-            
-            <Button Content="Delete all users"
-                    Foreground="Red"
-                    Background="Black"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Click="DeleteUsers" />
+                
+            </Grid>
           
-        </Grid>
+        </Border>
+        
+        <Button Content="Delete all users"
+            FontSize="16"
+            Foreground="Red"
+            Background="Black"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Click="DeleteUsers" />
+          
+    </Grid>
     
 </Page>

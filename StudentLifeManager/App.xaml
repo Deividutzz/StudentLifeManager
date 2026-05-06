@@ -12,8 +12,8 @@
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/Colors.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/Buttons.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/Controls.xaml"/>
-                <ResourceDictionary Source="/Resources/Styles/LoginPage/PageStyles.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/BaseLoginStyle.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/LoginPage/PageStyles.xaml"/>
                 
             </ResourceDictionary.MergedDictionaries>
             

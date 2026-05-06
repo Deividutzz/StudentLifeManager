@@ -3,7 +3,7 @@
     
     <Style x:Key="LoginPageStyle" TargetType="Page"
            BasedOn="{StaticResource BasePageStyle}">
-        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
     </Style>
 
 </ResourceDictionary>
