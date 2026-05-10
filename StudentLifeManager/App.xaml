@@ -8,12 +8,25 @@
             
             <ResourceDictionary.MergedDictionaries>
                 
+                <ResourceDictionary Source="/Resources/Styles/Colors.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/BaseControls.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/TextBlocks.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/CheckBoxes.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/TextBoxes.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/BasePage.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/Buttons.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/Fonts.xaml"/>
+                
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/Text.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/Colors.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/Buttons.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/Controls.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/BaseLoginStyle.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/PageStyles.xaml"/>
+                
+                <ResourceDictionary Source="/Resources/Styles/PageThemes/RegisterTheme.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/PageThemes/LoginTheme.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/PageThemes/MainTheme.xaml"/>
                 
             </ResourceDictionary.MergedDictionaries>
             

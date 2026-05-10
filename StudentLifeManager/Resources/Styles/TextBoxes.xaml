@@ -1,0 +1,16 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style x:Key="RetroTextBox" TargetType="TextBox">
+        
+        <Setter Property="Background" Value="{StaticResource RetroPanelBackground}"/>
+        <Setter Property="Foreground" Value="{StaticResource RetroTextLight}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource RetroLightPurple}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="FontFamily" Value="{StaticResource RetroBodyFont}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        
+    </Style>
+    
+</ResourceDictionary>

@@ -105,4 +105,9 @@ public class ErrorManager
         return false;
         
     }
+
+    public bool ValidateChar(char ch)
+    {
+        return ValidChar(ch);
+    }
 }

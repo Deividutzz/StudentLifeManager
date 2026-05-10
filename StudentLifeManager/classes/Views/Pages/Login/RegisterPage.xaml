@@ -3,45 +3,66 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
-      mc:Ignorable="d"
-      Height="450" Width="800">
       
-      <Grid VerticalAlignment = "Center" HorizontalAlignment="Center">
+      Style="{StaticResource RegisterPageStyle}"
+      
+      mc:Ignorable="d">
+      
+      <Page.Resources>
+        
+            <Style TargetType="TextBlock" BasedOn="{StaticResource LoginTextBlock}" />
+            <Style TargetType="CheckBox" BasedOn="{StaticResource LoginCheckBox}" />
+            <Style TargetType="TextBox" BasedOn="{StaticResource LoginTextBox}" />
+            <Style TargetType="Button" BasedOn="{StaticResource LoginButton}" />
+        
+      </Page.Resources>
+      
+      <Grid Margin="20">
             
-            <Border Width="800" Height="400">
+            <Border Padding="40" Width="960" Height="480">
             
-                  <StackPanel>
+                  <Grid>
                   
-                        <TextBlock Text="SIGN IN" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Top" />
+                        <!--TextBlock Text="SIGN IN" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Top" / -->
                         
-                        <TextBlock Text="&#10;Create a username:" FontSize="16"/>
-                        <StackPanel Orientation="Horizontal">
-                              <TextBox Name="UsernameTb" HorizontalAlignment="Left" MinWidth="100" KeyDown="EnterInput"/>
-                              <TextBlock Name="UsernameErr" Foreground="Red" FontSize="16" Visibility="Collapsed"/>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                              
+                              <TextBlock Text="Create an username:"/>
+                        
+                              <TextBox Name="UsernameTb" MinWidth="100" KeyDown="EnterInput" TextChanged="OnTextChanged"/>
+                              <TextBlock Name="UsernameErr" Foreground="Red" Visibility="Hidden" />
+                              
+                        
+                              <TextBlock Text="Create a password:" />
+                        
+                              <TextBox Name="PasswordTb" MinWidth="125"
+                                       KeyDown="EnterInput" TextChanged="OnTextChanged"
+                                       PreviewTextInput="PasswordPreviewTextInput"
+                                       PreviewKeyDown="PasswordPreviewKeyDown"/>
+                              
+                              <CheckBox Content="View password" Checked="Checked" Unchecked="Unchecked"/>
+                              
+                              <TextBlock Name="PasswordErr" Foreground="Red" HorizontalAlignment="Right" FontSize="16" Visibility="Hidden" />
+                              
                         </StackPanel>
                         
-                        <TextBlock Text="Create a password:" FontSize="16"/>
-                        <StackPanel Orientation="Horizontal">
-                              <TextBox Name="PasswordTb" HorizontalAlignment="Left" MinWidth="100" KeyDown="EnterInput"/>
-                              <TextBlock Name="PasswordErr" Foreground="Red" FontSize="16" Visibility="Collapsed"/>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                              
+                              <Button Cursor="Hand"
+                                      Content="Log in"
+                                      Click="GoToLogin"
+                                      MinWidth="130"/>
+                        
+                              <Button Cursor="Hand"
+                                      Content="Register now"
+                                      Click="Register"
+                                      MinWidth="130"/>
+                        
+                              <TextBlock Name="Confirmation" Foreground="ForestGreen" FontSize="16" Visibility="Hidden" />
+                              
                         </StackPanel>
                         
-                        <Button Cursor="Hand"
-                                HorizontalAlignment="Left"
-                                Content="Log in"
-                                Click="GoToLogin"
-                                MinWidth="125"/>
-                        
-                        <Button Cursor="Hand"
-                                HorizontalAlignment="Left"
-                                Content="Register now"
-                                Click="Register"
-                                MinWidth="125"/>
-                        
-                        <TextBlock Name="Confirmation" Foreground="ForestGreen" FontSize="16" Visibility="Collapsed" />
-                  
-                  </StackPanel>
+                  </Grid>
               
             </Border>
           

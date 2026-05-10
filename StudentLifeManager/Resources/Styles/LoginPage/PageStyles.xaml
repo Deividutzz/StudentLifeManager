@@ -3,7 +3,12 @@
     
     <Style x:Key="LoginPageStyle" TargetType="Page"
            BasedOn="{StaticResource BasePageStyle}">
-        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+           
+    </Style>
+    
+    <Style x:Key="RegisterPageStyle" TargetType="Page"
+           BasedOn="{StaticResource BasePageStyle}">
+        
     </Style>
 
 </ResourceDictionary>

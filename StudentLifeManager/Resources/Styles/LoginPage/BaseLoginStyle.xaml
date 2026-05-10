@@ -4,6 +4,7 @@
     <Style x:Key="BasePageStyle" TargetType="Page">
         
         <Setter Property="Background" Value="{StaticResource LoginBackgroundColor}" />
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
         
     </Style>
 

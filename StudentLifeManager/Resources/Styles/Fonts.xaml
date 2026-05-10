@@ -1,0 +1,7 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <FontFamily x:Key="RetroHeadingFont">pack://application:,,,/Assets/Fonts/#Press Start 2P</FontFamily>
+    <FontFamily x:Key="RetroBodyFont">Segoe UI</FontFamily>
+
+</ResourceDictionary>

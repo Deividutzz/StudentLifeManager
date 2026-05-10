@@ -1,0 +1,12 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="RetroPanelBackground" Color="#1A1333"/>
+    <SolidColorBrush x:Key="RetroDarkBackground" Color="#0F0A1E"/>
+    <SolidColorBrush x:Key="RetroPrimaryPurple" Color="#7C3AED"/>
+    <SolidColorBrush x:Key="RetroShadowPurple" Color="#3B0764"/>
+    <SolidColorBrush x:Key="RetroLightPurple" Color="#C4B5FD"/>
+    <SolidColorBrush x:Key="RetroAccentBlue" Color="#312E81"/>
+    <SolidColorBrush x:Key="RetroTextLight" Color="#F5F3FF"/>
+
+</ResourceDictionary>

@@ -1,0 +1,59 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Main heading -->
+    <Style x:Key="RetroHeadingText" TargetType="TextBlock">
+        
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource RetroLightPurple}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RetroHeadingFont}"/>
+        <Setter Property="FontSize" Value="28"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,8"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="1"
+                                  ShadowDepth="3"
+                                  Color="#F5F3FF"
+                                  Opacity="4"/>
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
+
+    <!-- Section labels -->
+    <Style x:Key="RetroLabelText" TargetType="TextBlock">
+        
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource RetroTextLight}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RetroBodyFont}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Margin" Value="0,4"/>
+        
+    </Style>
+
+    <!-- Small helper/error text -->
+    <Style x:Key="RetroSmallText" TargetType="TextBlock">
+        
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource RetroAccentBlue}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RetroBodyFont}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Margin" Value="0,2"/>
+        
+    </Style>
+
+    <!-- Error text -->
+    <Style x:Key="RetroErrorText" TargetType="TextBlock">
+        
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#FF4D6D"/>
+        <Setter Property="FontFamily" Value="{StaticResource RetroBodyFont}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0,4"/>
+        
+    </Style>
+
+</ResourceDictionary>
