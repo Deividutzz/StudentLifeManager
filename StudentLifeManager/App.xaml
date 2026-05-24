@@ -10,12 +10,14 @@
                 
                 <ResourceDictionary Source="/Resources/Styles/Colors.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/BaseControls.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/LogoTextStyles.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/TextBlocks.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/CheckBoxes.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/TextBoxes.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/BasePage.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/Buttons.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/Fonts.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/Cards.xaml"/>
                 
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/Text.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/LoginPage/Colors.xaml"/>

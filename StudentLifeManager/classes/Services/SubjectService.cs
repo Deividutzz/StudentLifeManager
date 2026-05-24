@@ -35,6 +35,11 @@ public class SubjectService
         _subjectDb.DeleteSubject(subjectToRemove.Id);
     }
 
+    public void RemoveAll(ObservableCollection<Subject> subjects)
+    {
+        subjects.Clear();
+    }
+
     public ObservableCollection<Subject> LoadSubjects(int userId)
     {
         var loadedSubj = _subjectDb.GetSubjectById(userId);

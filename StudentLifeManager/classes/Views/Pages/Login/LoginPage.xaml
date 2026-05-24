@@ -4,15 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         
-        Style="{StaticResource BaseRetroPageStyle}"
+        Style="{StaticResource BaseLoginPage}"
 
         mc:Ignorable="d">
     
     <Page.Resources>
         
         <Style TargetType="CheckBox" BasedOn="{StaticResource LoginCheckBox}" />
-        <Style TargetType="TextBox" BasedOn="{StaticResource RetroTextBox}" />
-        <Style TargetType="Button" BasedOn="{StaticResource LoginButton}" />
+        <Style TargetType="TextBlock" BasedOn="{StaticResource RetroLabelText}" />
+        <Style TargetType="TextBox" BasedOn="{StaticResource RetroLoginTextBox}" />
+        <Style TargetType="Button" BasedOn="{StaticResource PrimaryLoginButton}" />
         
     </Page.Resources>
     
@@ -22,16 +23,18 @@
           
             <Grid Background="Transparent">
               
-                <TextBlock Text="Sign in" Padding="0,40,0,0" Style="{StaticResource RetroHeadingText}" VerticalAlignment="Top" FontSize="32"/>
+                <TextBlock Text="Sign in" Padding="0,40,0,0"
+                           Style="{StaticResource RetroHeadingText}"
+                           VerticalAlignment="Top" FontSize="32"/>
 
                 <StackPanel VerticalAlignment="Center">
                     
-                    <TextBlock Text="Insert your username:" Style="{StaticResource RetroLabelText}" />
-                    <TextBox Name = "Username" KeyDown="EnterInput" MinWidth="100" />
+                    <TextBlock Text="Insert your username:" />
+                    <TextBox Name = "Username" KeyDown="EnterInput" />
 
-                    <TextBlock Text="Insert the password:" Style="{StaticResource RetroLabelText}" />
+                    <TextBlock Text="Insert the password:" />
                     
-                    <TextBox Name = "Password" KeyDown="EnterInput" MinWidth="125"
+                    <TextBox Name = "Password" KeyDown="EnterInput" 
                              PreviewTextInput="PasswordPreviewTextInput"
                              PreviewKeyDown="PasswordPreviewKeyDown" />
                     
@@ -41,21 +44,20 @@
                 
                 <StackPanel VerticalAlignment="Bottom">
                     
-                    <Button Content="Log in" Click="Validate" MinWidth="130" />
+                    <Button Content="Log in" Click="Validate" Padding="0" />
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 
-                        <TextBlock Text="Don't have an account? " Style="{StaticResource RetroLabelText}" />
+                        <TextBlock Text="Don't have an account? " />
                         <Button Content="Register"
                                 Click="GoRegister"
-                                Background="Transparent"
-                                BorderBrush="Transparent" />
+                                Padding="0"
+                                FontSize="16"/>
 
                     </StackPanel>
 
                     <TextBlock Name="LoginErr"
                                Style="{StaticResource RetroErrorText}"
-                               Foreground="Red"
                                Visibility="Hidden"/>
 
                 </StackPanel>
@@ -64,6 +66,7 @@
           
         </Border>
         
+        
         <Button Content="Delete all users"
             FontSize="11"
             Foreground="Red"
@@ -71,6 +74,8 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Click="DeleteUsers" />
+        <Button Content="cheating" Click="Cheats" HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"/>
           
     </Grid>
     

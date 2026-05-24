@@ -1,0 +1,112 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Metallic / purple gradient for the front text -->
+    <LinearGradientBrush x:Key="RetroMetalTextBrush"
+                         StartPoint="0,0"
+                         EndPoint="0,1">
+        <GradientStop Color="#FFFFFF" Offset="0"/>
+        <GradientStop Color="#C4B5FD" Offset="0.35"/>
+        <GradientStop Color="#7C3AED" Offset="0.7"/>
+        <GradientStop Color="#312E81" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Glow behind the title -->
+    <DropShadowEffect x:Key="RetroLogoGlow"
+                      BlurRadius="22"
+                      ShadowDepth="0"
+                      Color="#7C3AED"
+                      Opacity="0.65"/>
+
+    <!-- Main special title/logo style -->
+    <Style x:Key="RetroMetalLogoTitle" TargetType="ContentControl">
+
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="FontFamily" Value="Impact"/>
+        <Setter Property="FontSize" Value="58"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource RetroMetalTextBrush}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
+
+                        <!-- Outer glow layer -->
+                        <TextBlock Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   Foreground="{StaticResource RetroPrimaryPurple}"
+                                   Opacity="0.45"
+                                   Effect="{StaticResource RetroLogoGlow}"
+                                   TextAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <SkewTransform AngleX="-8"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+
+                        <!-- Bottom/right deep 3D shadow -->
+                        <TextBlock Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   Foreground="{StaticResource RetroShadowPurple}"
+                                   Margin="7,7,0,0"
+                                   TextAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <SkewTransform AngleX="-8"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+
+                        <!-- Dark blue 3D layer -->
+                        <TextBlock Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   Foreground="{StaticResource RetroAccentSoftBlue}"
+                                   Margin="4,4,0,0"
+                                   TextAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <SkewTransform AngleX="-8"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+
+                        <!-- Small light highlight layer -->
+                        <TextBlock Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   Foreground="#FFFFFF"
+                                   Margin="-2,-2,0,0"
+                                   Opacity="0.55"
+                                   TextAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <SkewTransform AngleX="-8"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+
+                        <!-- Main front text -->
+                        <TextBlock Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   TextAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <SkewTransform AngleX="-8"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+</ResourceDictionary>

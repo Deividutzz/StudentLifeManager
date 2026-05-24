@@ -2,47 +2,116 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <Style x:Key="RetroButton" TargetType="Button">
-        
-        <Setter Property="Foreground" Value="{StaticResource RetroTextLight}"/>
-        <Setter Property="Background" Value="{StaticResource RetroPrimaryPurple}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource RetroLightPurple}"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="FontFamily" Value="{StaticResource RetroHeadingFont}"/>
-        <Setter Property="Padding" Value="12,6"/>
+        <Setter Property="Foreground" Value="{StaticResource RetroTextLight}" />
+        <Setter Property="FontFamily" Value="Consolas"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+
+        <!-- Button height -->
+        <Setter Property="MinHeight" Value="28"/>
+
+        <!-- Internal spacing -->
+        <Setter Property="Padding" Value="16,9"/>
+
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid>
-                        <Border x:Name="Shadow"
-                                Background="{StaticResource RetroShadowPurple}"
-                                Margin="4,4,0,0"/>
-                    
-                        <Border x:Name="MainBorder"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
+
+                    <Grid SnapsToDevicePixels="True">
+
+                        <!-- 
+                            Shadow layer moved DOWN and RIGHT.
+                            This creates the retro 3D effect on bottom + right.
+                        -->
+                        <Border x:Name="ShadowLayer"
+                                Background="{StaticResource RetroButtonBottomShadow}"
+                                CornerRadius="5"
+                                Margin="5,5,0,0"/>
+
+                        <!-- 
+                            Main button leaves space on the bottom and right,
+                            so the shadow becomes visible there.
+                        -->
+                        <Border x:Name="MainLayer"
+                                Background="{StaticResource RetroButtonFace}"
+                                CornerRadius="5"
+                                Margin="0,0,5,5"
+                                BorderBrush="{StaticResource RetroShadowPurple}"
+                                BorderThickness="2">
+
+                            <Grid>
+                                <!-- Top highlight strip -->
+                                <Border x:Name="TopHighlight"
+                                        Background="{StaticResource RetroButtonTopHighlight}"
+                                        Height="4"
+                                        VerticalAlignment="Top"
+                                        CornerRadius="5,5,0,0"
+                                        Opacity="0.65"/>
+
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Margin="{TemplateBinding Padding}"/>
+                            </Grid>
                         </Border>
+
                     </Grid>
 
                     <ControlTemplate.Triggers>
 
+                        <!-- Hover -->
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="MainBorder" Property="Margin" Value="0,0,4,4"/>
-                            <Setter TargetName="Shadow" Property="Margin" Value="2,2,0,0"/>
+                            <Setter TargetName="MainLayer"
+                                    Property="Background"
+                                    Value="{StaticResource RetroPrimaryPurple}"/>
+
+                            <Setter TargetName="ShadowLayer"
+                                    Property="Opacity"
+                                    Value="0.85"/>
+
+                            <Setter TargetName="MainLayer" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="18"
+                                                      ShadowDepth="0"
+                                                      Color="#C4B5FD"
+                                                      Opacity="0.4"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
 
+                        <!-- Pressed: button moves closer to shadow -->
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="MainBorder" Property="Margin" Value="4,4,0,0"/>
-                            <Setter TargetName="Shadow" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="MainLayer"
+                                    Property="Margin"
+                                    Value="3,3,2,2"/>
+
+                            <Setter TargetName="ShadowLayer"
+                                    Property="Margin"
+                                    Value="4,4,1,1"/>
+
+                            <Setter TargetName="MainLayer"
+                                    Property="Background"
+                                    Value="{StaticResource RetroShadowPurple}"/>
+
+                            <Setter TargetName="TopHighlight"
+                                    Property="Opacity"
+                                    Value="0.25"/>
+                        </Trigger>
+
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
     </Style>
     
 </ResourceDictionary>

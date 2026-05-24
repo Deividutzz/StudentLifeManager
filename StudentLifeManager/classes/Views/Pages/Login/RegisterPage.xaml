@@ -4,68 +4,105 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       
-      Style="{StaticResource RegisterPageStyle}"
+      Style="{StaticResource BaseRegisterPage}"
       
       mc:Ignorable="d">
       
-      <Page.Resources>
-        
-            <Style TargetType="TextBlock" BasedOn="{StaticResource LoginTextBlock}" />
-            <Style TargetType="CheckBox" BasedOn="{StaticResource LoginCheckBox}" />
-            <Style TargetType="TextBox" BasedOn="{StaticResource LoginTextBox}" />
-            <Style TargetType="Button" BasedOn="{StaticResource LoginButton}" />
-        
-      </Page.Resources>
+    <Page.Resources>
+        <Style TargetType="CheckBox" BasedOn="{StaticResource LoginCheckBox}" />
+        <Style TargetType="TextBox" BasedOn="{StaticResource RetroLoginTextBox}" />
+        <Style TargetType="Button" BasedOn="{StaticResource PrimaryLoginButton}" />
+    </Page.Resources>
       
-      <Grid Margin="20">
+    <Grid Margin="20">
             
-            <Border Padding="40" Width="960" Height="480">
+        <Border Padding="40"
+                Width="960"
+                Height="560"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
             
-                  <Grid>
-                  
-                        <!--TextBlock Text="SIGN IN" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Top" / -->
-                        
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid>
+
+                <!-- Page title -->
+                <TextBlock Text="Create account"
+                           Style="{StaticResource RetroHeadingText}"
+                           FontSize="32"
+                           VerticalAlignment="Top"
+                           Margin="0,25,0,0"/>
+
+                <!-- Register form -->
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
                               
-                              <TextBlock Text="Create an username:"/>
+                    <TextBlock Text="Create an username:"
+                               Style="{StaticResource RetroLabelText}"/>
                         
-                              <TextBox Name="UsernameTb" MinWidth="100" KeyDown="EnterInput" TextChanged="OnTextChanged"/>
-                              <TextBlock Name="UsernameErr" Foreground="Red" Visibility="Hidden" />
+                    <TextBox Name="UsernameTb"
+                             KeyDown="EnterInput"
+                             TextChanged="OnTextChanged"/>
+
+                    <TextBlock Name="UsernameErr"
+                               Style="{StaticResource RetroErrorText}"
+                               Visibility="Hidden"/>
                               
+                    <TextBlock Text="Create a password:"
+                               Style="{StaticResource RetroLabelText}"
+                               Margin="0,10,0,3"/>
                         
-                              <TextBlock Text="Create a password:" />
-                        
-                              <TextBox Name="PasswordTb" MinWidth="125"
-                                       KeyDown="EnterInput" TextChanged="OnTextChanged"
-                                       PreviewTextInput="PasswordPreviewTextInput"
-                                       PreviewKeyDown="PasswordPreviewKeyDown"/>
+                    <TextBox Name="PasswordTb"
+                             KeyDown="EnterInput"
+                             TextChanged="OnTextChanged"
+                             PreviewTextInput="PasswordPreviewTextInput"
+                             PreviewKeyDown="PasswordPreviewKeyDown"/>
                               
-                              <CheckBox Content="View password" Checked="Checked" Unchecked="Unchecked"/>
+                    <CheckBox Content="View password"
+                              Checked="Checked"
+                              Unchecked="Unchecked"/>
+
+                    <TextBlock Name="PasswordErr"
+                               Style="{StaticResource RetroErrorText}"
+                               Visibility="Hidden"/>
                               
-                              <TextBlock Name="PasswordErr" Foreground="Red" HorizontalAlignment="Right" FontSize="16" Visibility="Hidden" />
+                </StackPanel>
+                        
+                <!-- Bottom actions -->
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Margin="0,0,0,20">
                               
-                        </StackPanel>
-                        
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Button Content="Register now"
+                            Click="Register"
+                            MinWidth="130"/>
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0,4,0,0">
+
+                        <TextBlock Text="Already have an account? "
+                                   Style="{StaticResource RetroLabelText}"
+                                   VerticalAlignment="Center"/>
+
+                        <Button Content="Log in"
+                                Click="GoToLogin"
+                                Padding="0"
+                                FontSize="16"/>
+
+                    </StackPanel>
+
+                    <TextBlock Name="Confirmation"
+                               Foreground="{StaticResource RetroSuccess}"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               HorizontalAlignment="Center"
+                               Visibility="Hidden"/>
                               
-                              <Button Cursor="Hand"
-                                      Content="Log in"
-                                      Click="GoToLogin"
-                                      MinWidth="130"/>
+                </StackPanel>
                         
-                              <Button Cursor="Hand"
-                                      Content="Register now"
-                                      Click="Register"
-                                      MinWidth="130"/>
-                        
-                              <TextBlock Name="Confirmation" Foreground="ForestGreen" FontSize="16" Visibility="Hidden" />
-                              
-                        </StackPanel>
-                        
-                  </Grid>
+            </Grid>
               
-            </Border>
+        </Border>
           
-      </Grid>
+    </Grid>
       
 </Page>

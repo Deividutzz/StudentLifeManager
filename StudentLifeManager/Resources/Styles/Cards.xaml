@@ -1,0 +1,218 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ===================================================== -->
+    <!-- DASHBOARD CARD BUTTON -->
+    <!-- Used for the main page cards: Subjects, To-do, Notes -->
+    <!-- ===================================================== -->
+
+    <Style x:Key="DashboardCardButton" TargetType="Button">
+
+        <!-- Default card background. Later you can replace this with ImageBrush. -->
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#2A1A52" Offset="0"/>
+                    <GradientStop Color="#1A1333" Offset="0.45"/>
+                    <GradientStop Color="#0F0A1E" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Foreground" Value="{StaticResource RetroTextLight}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RetroBodyFont}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="12"/>
+        <Setter Property="MinWidth" Value="260"/>
+        <Setter Property="MinHeight" Value="150"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Grid SnapsToDevicePixels="True">
+
+                        <!-- Bottom + right 3D shadow layer -->
+                        <Border x:Name="CardShadowLayer"
+                                Background="{StaticResource RetroShadowPurple}"
+                                BorderBrush="{StaticResource RetroShadowPurple}"
+                                BorderThickness="2"
+                                CornerRadius="16"
+                                Margin="7,7,0,0"
+                                Opacity="0.95"/>
+
+                        <!-- Main card layer -->
+                        <Border x:Name="CardBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{StaticResource RetroBorderBright}"
+                                BorderThickness="2"
+                                CornerRadius="16"
+                                Margin="0,0,7,7"
+                                SnapsToDevicePixels="True">
+
+                            <Grid>
+
+                                <!-- Dark overlay so text stays readable over images later -->
+                                <Border x:Name="DarkOverlay"
+                                        CornerRadius="14"
+                                        Opacity="0.72">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#CC0F0A1E" Offset="0"/>
+                                            <GradientStop Color="#AA1A1333" Offset="0.55"/>
+                                            <GradientStop Color="#DD000000" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+
+                                <!-- Subtle highlight at top -->
+                                <Border x:Name="TopHighlight"
+                                        Height="4"
+                                        VerticalAlignment="Top"
+                                        CornerRadius="14,14,0,0"
+                                        Opacity="0.75"
+                                        Background="{StaticResource RetroLightPurple}"/>
+
+                                <!-- Card content -->
+                                <ContentPresenter Margin="22"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <!-- Hover effect -->
+                        <Trigger Property="IsMouseOver" Value="True">
+
+                            <Setter TargetName="CardBorder"
+                                    Property="BorderBrush"
+                                    Value="{StaticResource RetroLightPurple}"/>
+
+                            <Setter TargetName="CardShadowLayer"
+                                    Property="Background"
+                                    Value="{StaticResource RetroPrimaryPurple}"/>
+
+                            <Setter TargetName="CardShadowLayer"
+                                    Property="Opacity"
+                                    Value="0.75"/>
+
+                            <Setter TargetName="DarkOverlay"
+                                    Property="Opacity"
+                                    Value="0.58"/>
+
+                            <Setter TargetName="CardBorder"
+                                    Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="24"
+                                                      ShadowDepth="0"
+                                                      Color="#7C3AED"
+                                                      Opacity="0.42"/>
+                                </Setter.Value>
+                            </Setter>
+
+                        </Trigger>
+
+                        <!-- Pressed: card moves down/right, closer to shadow -->
+                        <Trigger Property="IsPressed" Value="True">
+
+                            <Setter TargetName="CardBorder"
+                                    Property="Margin"
+                                    Value="4,4,3,3"/>
+
+                            <Setter TargetName="CardShadowLayer"
+                                    Property="Margin"
+                                    Value="6,6,1,1"/>
+
+                            <Setter TargetName="CardBorder"
+                                    Property="Opacity"
+                                    Value="0.86"/>
+
+                            <Setter TargetName="DarkOverlay"
+                                    Property="Opacity"
+                                    Value="0.82"/>
+
+                        </Trigger>
+
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+
+    <!-- ===================================================== -->
+    <!-- CARD TITLE TEXT -->
+    <!-- Example: Subjects, To-do List, Calendar -->
+    <!-- ===================================================== -->
+
+    <Style x:Key="DashboardCardTitle" TargetType="TextBlock">
+
+        <Setter Property="Foreground" Value="{StaticResource RetroTextLight}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RetroHeadingFont}"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="0,0,0,8"/>
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="8"
+                                  ShadowDepth="0"
+                                  Color="#000000"
+                                  Opacity="0.8"/>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+
+    <!-- ===================================================== -->
+    <!-- CARD DESCRIPTION TEXT -->
+    <!-- Small text under the title -->
+    <!-- ===================================================== -->
+
+    <Style x:Key="DashboardCardDescription" TargetType="TextBlock">
+
+        <Setter Property="Foreground" Value="{StaticResource RetroTextMuted}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RetroBodyFont}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="MaxWidth" Value="220"/>
+
+    </Style>
+
+
+    <!-- ===================================================== -->
+    <!-- CARD SMALL TAG -->
+    <!-- Example: Open, Coming soon, 3 subjects, etc. -->
+    <!-- ===================================================== -->
+
+    <Style x:Key="DashboardCardTag" TargetType="TextBlock">
+
+        <Setter Property="Foreground" Value="{StaticResource RetroLightPurple}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RetroBodyFont}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,2 @@
+-> Make a stopwatch that is useful for counting the hours invested in a subject.
+-> (Indeed needed) Make a table and a solid structure for saving all the info for the specific subject (time spent, results, etc...)

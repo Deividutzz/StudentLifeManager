@@ -86,6 +86,11 @@ public class MainViewModel : INotifyPropertyChanged
     {
         _subjectService.RemoveSubject(Subjects, subject);
     }
+
+    public void RemoveAllSubjects()
+    {
+        _subjectService.RemoveAll(Subjects);
+    }
     
     public User CurrentUser { get; private set; }
 

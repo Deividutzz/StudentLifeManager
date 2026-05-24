@@ -21,6 +21,8 @@ public partial class RegisterPage : Page
     {
         if (e.Key == Key.Enter)
         {
+            e.Handled = true;
+            
             if(UsernameTb != null && PasswordTb !=  null)
                 Register(sender, e);
         }
@@ -86,6 +88,18 @@ public partial class RegisterPage : Page
 
     private void PasswordPreviewTextInput(object sender, TextCompositionEventArgs e)
     {
+        if (string.IsNullOrEmpty(e.Text))
+        {
+            e.Handled = true;
+            return;
+        }
+
+        if (e.Text.Contains('\r') || e.Text.Contains('\n'))
+        {
+            e.Handled = true;
+            return;
+        }
+
         InsertPasswordText(e.Text);
         e.Handled = true;
     }
@@ -174,7 +188,7 @@ public partial class RegisterPage : Page
     private void Register(object sender, RoutedEventArgs e)
     {
         string userName = UsernameTb.Text;
-        string userPass = PasswordTb.Text;
+        string userPass = _passManager.GetPassword();
         
         UsernameErr.Visibility = Visibility.Hidden;
         PasswordErr.Visibility = Visibility.Hidden;

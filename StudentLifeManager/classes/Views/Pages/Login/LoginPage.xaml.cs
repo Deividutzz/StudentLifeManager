@@ -189,6 +189,14 @@ public partial class LoginPage : Page
         }
     }
 
+    private void Cheats(object sender, RoutedEventArgs e)
+    {
+        var vm = new MainViewModel(_authService, _userManager);
+        _vm = vm;
+        
+        NavigationService.Navigate(new MainPage.MainPage(_vm));
+    }
+
     private void DeleteUsers(object sender, RoutedEventArgs e)
     {
         _userManager.DeleteAllUsers();

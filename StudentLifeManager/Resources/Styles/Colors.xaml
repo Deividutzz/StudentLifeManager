@@ -1,12 +1,55 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="RetroPanelBackground" Color="#1A1333"/>
+    <!-- ===================== -->
+    <!-- CORE BACKGROUNDS -->
+    <!-- ===================== -->
     <SolidColorBrush x:Key="RetroDarkBackground" Color="#0F0A1E"/>
+    <SolidColorBrush x:Key="RetroPanelBackground" Color="#1A1333"/>
+    <SolidColorBrush x:Key="RetroSurfaceElevated" Color="#241A44"/>
+    <SolidColorBrush x:Key="RetroRegisterBackground" Color="#100D24"/>
+
+    <!-- ===================== -->
+    <!-- PURPLE THEME CORE -->
+    <!-- ===================== -->
     <SolidColorBrush x:Key="RetroPrimaryPurple" Color="#7C3AED"/>
-    <SolidColorBrush x:Key="RetroShadowPurple" Color="#3B0764"/>
     <SolidColorBrush x:Key="RetroLightPurple" Color="#C4B5FD"/>
-    <SolidColorBrush x:Key="RetroAccentBlue" Color="#312E81"/>
+    <SolidColorBrush x:Key="RetroShadowPurple" Color="#3B0764"/>
+
+    <!-- ===================== -->
+    <!-- ACCENT (refined blue) -->
+    <!-- ===================== -->
+    <SolidColorBrush x:Key="RetroAccentBlue" Color="#4F46E5"/>
+    <SolidColorBrush x:Key="RetroAccentSoftBlue" Color="#312E81"/>
+
+    <!-- ===================== -->
+    <!-- TEXT COLORS -->
+    <!-- ===================== -->
     <SolidColorBrush x:Key="RetroTextLight" Color="#F5F3FF"/>
+    <SolidColorBrush x:Key="RetroTextMuted" Color="#B8B2D6"/>
+
+    <!-- ===================== -->
+    <!-- BORDERS / LINES -->
+    <!-- ===================== -->
+    <SolidColorBrush x:Key="RetroBorder" Color="#2A1F4A"/>
+    <SolidColorBrush x:Key="RetroBorderBright" Color="#3B2B66"/>
+
+    <!-- ===================== -->
+    <!-- STATE COLORS -->
+    <!-- ===================== -->
+    <SolidColorBrush x:Key="RetroSuccess" Color="#22C55E"/>
+    <SolidColorBrush x:Key="RetroWarning" Color="#FACC15"/>
+    <SolidColorBrush x:Key="RetroError" Color="#EF4444"/>
+    
+    <!-- ===================== -->
+    <!-- 3D BUTTON LAYERS -->
+    <!-- ===================== -->
+
+    <SolidColorBrush x:Key="RetroButtonTopHighlight" Color="#A78BFA"/>
+    <SolidColorBrush x:Key="RetroButtonFace" Color="#7C3AED"/>
+    <SolidColorBrush x:Key="RetroButtonBottomShadow" Color="#4C1D95"/>
+
+    <!-- Hover glow -->
+    <SolidColorBrush x:Key="RetroButtonGlow" Color="#C4B5FD"/>
 
 </ResourceDictionary>
