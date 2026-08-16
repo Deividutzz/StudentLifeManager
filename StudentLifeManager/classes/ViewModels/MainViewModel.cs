@@ -76,9 +76,8 @@ public class MainViewModel : INotifyPropertyChanged
 
         int userId = _authService.CurrentUserId;
         _subjectService.AddSubject(Subjects, NewSubjectName, userId);
-        
+
         NewSubjectName = string.Empty;
-        
         ErrorMessage = string.Empty;
     }
     

@@ -1,0 +1,12 @@
+
+                                <Button Content="Edit"
+                                        Grid.Row="1"
+                                        Margin="10,0,0,0"
+                                        MinWidth="70"
+                                        Click="EditSubject"/>
+
+                                <Button Content="Save"
+                                        Grid.Row="2"
+                                        Margin="10,0,0,0"
+                                        MinWidth="70"
+                                        Click="SaveSubject"/>

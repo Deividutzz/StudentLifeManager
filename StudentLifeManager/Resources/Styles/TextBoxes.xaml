@@ -88,5 +88,118 @@
         </Setter>
 
     </Style>
+
+    <Style x:Key="RetroSubjTextBox" TargetType="TextBox">
+
+        <!-- Colors -->
+        <Setter Property="Background" Value="{StaticResource RetroSurfaceElevated}"/>
+        <Setter Property="Foreground" Value="{StaticResource RetroTextLight}"/>
+        <Setter Property="CaretBrush" Value="{StaticResource RetroLightPurple}"/>
+
+        <!-- Text selection -->
+        <Setter Property="SelectionBrush" Value="{StaticResource RetroPrimaryPurple}"/>
+        <Setter Property="SelectionTextBrush" Value="{StaticResource RetroTextLight}"/>
+
+        <!-- Border -->
+        <Setter Property="BorderBrush" Value="{StaticResource RetroBorderBright}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+
+        <!-- Font -->
+        <Setter Property="FontFamily" Value="{StaticResource RetroBodyFont}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+
+        <!-- Layout -->
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+
+                    <Border x:Name="TextBoxBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="8">
+
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      Margin="{TemplateBinding Padding}"
+                                      VerticalAlignment="Center"/>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="TextBoxBorder"
+                                    Property="BorderBrush"
+                                    Value="{StaticResource RetroLightPurple}"/>
+                        </Trigger>
+
+                        <!-- Focus -->
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="TextBoxBorder"
+                                    Property="BorderBrush"
+                                    Value="{StaticResource RetroLightPurple}"/>
+
+                            <Setter TargetName="TextBoxBorder"
+                                    Property="Background"
+                                    Value="{StaticResource RetroPanelBackground}"/>
+
+                            <Setter TargetName="TextBoxBorder"
+                                    Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="14"
+                                                      ShadowDepth="0"
+                                                      Color="#C4B5FD"
+                                                      Opacity="0.28"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+
+                        <!-- Read-only -->
+                        <Trigger Property="IsReadOnly" Value="True">
+                            <Setter TargetName="TextBoxBorder"
+                                    Property="Background"
+                                    Value="Transparent"/>
+
+                            <Setter TargetName="TextBoxBorder"
+                                    Property="BorderBrush"
+                                    Value="Transparent"/>
+
+                            <Setter Property="Foreground"
+                                    Value="{StaticResource RetroTextLight}"/>
+
+                            <Setter Property="Cursor"
+                                    Value="Arrow"/>
+                        </Trigger>
+
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.45"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    
+    <Style x:Key="TBlTextBoxStyle" TargetType="TextBox">
+        
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource RetroTextMuted}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RetroBodyFont}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0"/>
+        
+    </Style>
     
 </ResourceDictionary>

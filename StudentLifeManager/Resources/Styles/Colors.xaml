@@ -51,5 +51,14 @@
 
     <!-- Hover glow -->
     <SolidColorBrush x:Key="RetroButtonGlow" Color="#C4B5FD"/>
+    
+    <!-- Warm accents for contrast -->
+    <SolidColorBrush x:Key="RetroGold" Color="#FACC15"/>
+    <SolidColorBrush x:Key="RetroGoldSoft" Color="#FDE68A"/>
+    <SolidColorBrush x:Key="RetroGoldDark" Color="#A16207"/>
+
+    <!-- More neutral dark surfaces -->
+    <SolidColorBrush x:Key="RetroCardDark" Color="#171225"/>
+    <SolidColorBrush x:Key="RetroCardDarkElevated" Color="#211A35"/>
 
 </ResourceDictionary>

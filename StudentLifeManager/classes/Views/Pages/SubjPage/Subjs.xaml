@@ -5,6 +5,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
       Style="{StaticResource BaseMainPage}">
+    
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource RetroButton}" />
+    </Page.Resources>
 
     <Grid Margin="30">
 
@@ -18,15 +22,11 @@
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Column="0"
-                    Width="160"
+            
+            <StackPanel>
+                
+                <Button 
+                    Width="120"
                     Height="48"
                     Background="Transparent"
                     BorderThickness="0"
@@ -35,40 +35,41 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top">
 
-                <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
 
-                    <Image Source="/Resources/Assets/Icons/HomePage.png"
-                           Width="22"
-                           Height="22"
-                           Margin="0,0,8,0"/>
+                        <Image Source="/Resources/Assets/Icons/HomePage.png"
+                               Width="22"
+                               Height="22"
+                               Margin="0,0,8,0"/>
 
-                    <TextBlock Text="Home"
-                               Foreground="{StaticResource RetroTextLight}"
-                               VerticalAlignment="Center"/>
+                        <TextBlock Text="Home"
+                                   Foreground="{StaticResource RetroTextLight}"
+                                   VerticalAlignment="Center"/>
+
+                    </StackPanel>
+
+                </Button>
+                
+                <StackPanel 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top">
+
+                    <TextBlock Text="Subjects"
+                               FontSize="34"
+                               FontWeight="SemiBold"
+                               Foreground="{StaticResource RetroLightPurple}"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Manage your school subjects"
+                               FontSize="15"
+                               Foreground="{StaticResource RetroTextMuted}"
+                               HorizontalAlignment="Center"
+                               Margin="0,4,0,0"/>
 
                 </StackPanel>
-
-            </Button>
-
-            <!-- Page title, centered -->
-            <StackPanel Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Top">
-
-                <TextBlock Text="Subjects"
-                           FontSize="34"
-                           FontWeight="SemiBold"
-                           Foreground="{StaticResource RetroLightPurple}"
-                           HorizontalAlignment="Center"/>
-
-                <TextBlock Text="Manage your school subjects"
-                           FontSize="15"
-                           Foreground="{StaticResource RetroTextMuted}"
-                           HorizontalAlignment="Center"
-                           Margin="0,4,0,0"/>
-
+                
             </StackPanel>
 
         </Grid>
@@ -109,7 +110,8 @@
                     <TextBox Text="{Binding NewSubjectName, UpdateSourceTrigger=PropertyChanged}"
                              KeyDown="EnterInput"
                              Width="260"
-                             Margin="0,0,0,10"/>
+                             Margin="0,0,0,10"
+                             Style="{StaticResource LoginTextBox}"/>
 
                     <Button Content="Add Subject"
                             Width="150"
@@ -126,55 +128,149 @@
                 </StackPanel>
                 
                 <ListBox Grid.Row="1"
-                         ItemsSource="{Binding Subjects}"
-                         Width="620"
-                         Height="300"
-                         HorizontalAlignment="Center">
+                     ItemsSource="{Binding Subjects}"
+                     Width="760"
+                     Height="360"
+                     HorizontalAlignment="Center"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     Foreground="{StaticResource RetroTextLight}"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto">
 
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
+                <!-- Makes items go left to right, then wrap to next line -->
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
 
-                            <Grid Margin="5">
+                <!-- Removes ugly default ListBoxItem background/selection -->
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Margin" Value="10"/>
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <ContentPresenter/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
 
-                                <TextBox Grid.Column="0"
-                                         IsReadOnly="{Binding IsEditing}"
-                                         Text="{Binding Name}"
-                                         VerticalAlignment="Center"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         Foreground="{StaticResource RetroTextLight}"
-                                         MinWidth="180"/>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
 
-                                <Button Content="Edit"
-                                        Grid.Column="1"
-                                        Margin="10,0,0,0"
-                                        MinWidth="70"
-                                        Click="EditSubject"/>
+                        <!-- Subject card -->
+                        <Grid Width="220"
+                              Height="300">
 
-                                <Button Content="Save"
-                                        Grid.Column="2"
-                                        Margin="10,0,0,0"
-                                        MinWidth="70"
-                                        Click="SaveSubject"/>
+                            <!-- 3D shadow layer -->
+                            <Border Background="{StaticResource RetroShadowPurple}"
+                                    CornerRadius="14"
+                                    Margin="7,7,0,0"/>
 
-                                <Button Content="Remove"
-                                        Grid.Column="3"
-                                        Margin="10,0,0,0"
-                                        MinWidth="90"
-                                        Click="RemoveSubject"/>
+                            <!-- Main card -->
+                            <Border Background="{StaticResource RetroCardDarkElevated}"
+                                    BorderBrush="{StaticResource RetroGoldDark}"
+                                    BorderThickness="2"
+                                    CornerRadius="14"
+                                    Padding="16"
+                                    Margin="0,0,7,7">
 
-                            </Grid>
+                                <Grid>
+                                    
 
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border Height="5"
+                                            VerticalAlignment="Top"
+                                            Background="{StaticResource RetroGold}"
+                                            CornerRadius="12,12,0,0"
+                                            Margin="-16,-16,-16,12"/>
+                                    
+                                    <!-- Subject name -->
+                                    <TextBox Grid.Row="0"
+                                             Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             IsReadOnly="{Binding IsEditing}"
+                                             FontSize="20"
+                                             FontWeight="SemiBold"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             Foreground="{StaticResource RetroGoldSoft}"
+                                             HorizontalContentAlignment="Center"
+                                             Margin="0,0,0,14"/>
+
+                                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                        
+                                        <TextBlock Text="Classes per week: "
+                                                   FontSize="16"
+                                                   Foreground="{StaticResource RetroTextMuted}"
+                                                   Margin="0,0,0,4"/>
+
+                                        <TextBox KeyDown="EnterInp1"
+                                                 MinWidth="40"
+                                                 Height="40"
+                                                 HorizontalAlignment="Left"
+                                                 VerticalAlignment="Center"
+                                                 Style="{StaticResource RetroSubjTextBox}"/>
+
+                                    </StackPanel>
+                                    
+                                    <StackPanel Grid.Row="3">
+
+                                        <TextBlock Text="Grades"
+                                                   FontSize="16"
+                                                   Foreground="{StaticResource RetroTextMuted}"
+                                                   Margin="0,0,0,4"/>
+
+                                        <TextBox KeyDown="EnterInp2" 
+                                                 Height="67"
+                                                 TextWrapping="Wrap"
+                                                 VerticalScrollBarVisibility="Auto"
+                                                 Style="{StaticResource RetroSubjTextBox}"/>
+
+                                        <TextBlock Text="Example: 10, 9, 8"
+                                                   FontSize="11"
+                                                   Foreground="{StaticResource RetroTextMuted}"
+                                                   Margin="0,4,0,0"/>
+
+                                    </StackPanel>
+                                    
+                                    <StackPanel Grid.Row="4"
+                                                Orientation="Horizontal"
+                                                HorizontalAlignment="Center"
+                                                Margin="0,12,0,0">
+                                        
+                                        <Button Content="Edit" Width="67" Click="ManageGrades" />
+
+                                        <Button Content="Remove"
+                                                Width="67"
+                                                Click="RemoveSubject"/>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </Border>
+
+                        </Grid>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
             </Grid>
 
@@ -185,10 +281,6 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
                     Margin="0,20,0,0">
-
-            <Button Content="Log out"
-                    Width="140"
-                    Margin="0,0,10,0"/>
 
             <Button Content="Delete table"
                     Width="140"

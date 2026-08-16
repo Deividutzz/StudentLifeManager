@@ -110,4 +110,14 @@ public class ErrorManager
     {
         return ValidChar(ch);
     }
+
+    public bool ValidNumber(char ch)
+    {
+        if (ch >= '0' && ch <= '9')
+        {
+            return true;
+        }
+        
+        return false;
+    }
 }
